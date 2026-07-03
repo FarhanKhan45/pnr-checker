@@ -1,7 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 <meta charset="UTF-8">
 <title>Indian Railway PNR Checker</title>
@@ -119,7 +118,7 @@ button:hover{
 
 <h1>🚆 Indian Railway PNR Checker</h1>
 
-<form action="check-pnr" method="post">
+<form th:action="@{/check-pnr}" method="post">
 
 <input
 type="text"
