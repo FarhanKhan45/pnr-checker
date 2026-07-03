@@ -3,6 +3,7 @@ package com.jarvis.pnrchecker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -14,6 +15,11 @@ public class PnrController {
     @Autowired
     private PnrService pnrService;
 
+    @GetMapping("/")
+    public String home() {
+        return "index";
+    }
+
     @PostMapping("/check-pnr")
     public String checkPnr(@RequestParam String pnr, Model model) {
 
@@ -21,9 +27,10 @@ public class PnrController {
             PnrResponse response = pnrService.checkPnr(pnr);
             model.addAttribute("response", response);
         } catch (Exception e) {
-            e.printStackTrace();   // Print the real error in the console
+            e.printStackTrace();
             model.addAttribute("error", e.getMessage());
         }
+
         return "result";
     }
 }
