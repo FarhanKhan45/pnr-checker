@@ -49,6 +49,11 @@ public class PnrService {
 
         JsonNode data = root.get("data");
 
+        if (data == null || data.isNull()) {
+            throw new RuntimeException("Unable to fetch PNR details. Please check the PNR number and try again.");
+        }
+        
+
         PnrResponse pnrResponse = new PnrResponse();
         
      // Train Information

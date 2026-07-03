@@ -118,6 +118,18 @@ button:hover{
 
 <h1>🚆 Indian Railway PNR Checker</h1>
 
+<div th:if="${error}"
+     style="background:#ffebee;
+            color:#c62828;
+            padding:10px;
+            border-radius:8px;
+            margin-bottom:20px;
+            font-weight:bold;">
+
+    <span th:text="${error}"></span>
+
+</div>
+
 <form th:action="@{/check-pnr}" method="post">
 
 <input

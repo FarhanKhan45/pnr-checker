@@ -24,13 +24,20 @@ public class PnrController {
     public String checkPnr(@RequestParam String pnr, Model model) {
 
         try {
+
             PnrResponse response = pnrService.checkPnr(pnr);
             model.addAttribute("response", response);
-        } catch (Exception e) {
-            e.printStackTrace();
-            model.addAttribute("error", e.getMessage());
-        }
 
-        return "result";
+            return "result";
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            model.addAttribute("error",
+                    "Unable to fetch PNR details. Please check the PNR number or try again.");
+
+            return "index";
+        }
     }
 }
